@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+// 여기까지는 공통 코드
 
+// 여기서부터 수정합니다.
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
