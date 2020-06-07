@@ -34,30 +34,26 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(_text + '`s world'),
       ),
-      body: Row(
-          mainAxisSize: MainAxisSize.max, // 가로로 꽉 채우기
-          mainAxisAlignment: MainAxisAlignment.center, // 가로 방향 가운데 정렬
-          crossAxisAlignment: CrossAxisAlignment.center, // 세로 방향 가운데 정렬
-          children: <Widget>[
-            Container(
-                color: Colors.red,
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(8.0),
-                margin: const EdgeInsets.all(8.0)),
-            Container(
-                color: Colors.green,
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(8.0),
-                margin: const EdgeInsets.all(8.0)),
-            Container(
-                color: Colors.yellow,
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(8.0),
-                margin: const EdgeInsets.all(8.0)),
-          ]),
+      body: Stack(children: <Widget>[
+        Container(
+            color: Colors.red, // 빨강
+            width: 100,
+            height: 100,
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8.0)),
+        Container(
+            color: Colors.green, // 초록
+            width: 80,
+            height: 80,
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8.0)),
+        Container(
+            color: Colors.blue, // 파랑
+            width: 40,
+            height: 40,
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8.0)),
+      ]),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
