@@ -28,32 +28,19 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var _text = 'noel';
 
+  final items = List.generate(100, (i) => i).toList();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(_text + '`s world'),
       ),
-      body: Stack(children: <Widget>[
-        Container(
-            color: Colors.red, // 빨강
-            width: 100,
-            height: 100,
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.all(8.0)),
-        Container(
-            color: Colors.green, // 초록
-            width: 80,
-            height: 80,
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.all(8.0)),
-        Container(
-            color: Colors.blue, // 파랑
-            width: 40,
-            height: 40,
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.all(8.0)),
-      ]),
+      body: SingleChildScrollView(
+        child: ListBody(
+          children: items.map((i) => Text('$i')).toList(),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
