@@ -34,27 +34,30 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(_text + '`s world'),
       ),
-      body: Column(children: <Widget>[
-        Container(
-            color: Colors.red,
-            width: 100,
-            height: 100,
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.all(8.0)),
-        Container(
-            color: Colors.green,
-            width: 100,
-            height: 100,
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.all(8.0)),
-        Container(
-          color: Colors.blue,
-          width: 100,
-          height: 100,
-          padding: const EdgeInsets.all(8.0),
-          margin: const EdgeInsets.all(8.0),
-        )
-      ]),
+      body: Row(
+          mainAxisSize: MainAxisSize.max, // 가로로 꽉 채우기
+          mainAxisAlignment: MainAxisAlignment.center, // 가로 방향 가운데 정렬
+          crossAxisAlignment: CrossAxisAlignment.center, // 세로 방향 가운데 정렬
+          children: <Widget>[
+            Container(
+                color: Colors.red,
+                width: 100,
+                height: 100,
+                padding: const EdgeInsets.all(8.0),
+                margin: const EdgeInsets.all(8.0)),
+            Container(
+                color: Colors.green,
+                width: 100,
+                height: 100,
+                padding: const EdgeInsets.all(8.0),
+                margin: const EdgeInsets.all(8.0)),
+            Container(
+                color: Colors.yellow,
+                width: 100,
+                height: 100,
+                padding: const EdgeInsets.all(8.0),
+                margin: const EdgeInsets.all(8.0)),
+          ]),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
