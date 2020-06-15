@@ -36,11 +36,25 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(_text + '`s world'),
       ),
-      body: SingleChildScrollView(
-        child: ListBody(
-          children: items.map((i) => Text('$i')).toList(),
+      body: ListView(scrollDirection: Axis.vertical, children: <Widget>[
+        ListTile(
+          leading: Icon(Icons.home),
+          title: Text('Home'),
+          trailing: Icon(Icons.navigate_next),
+          onTap: () {},
         ),
-      ),
+        ListTile(
+          leading: Icon(Icons.event),
+          title: Text('Event'),
+          trailing: Icon(Icons.navigate_next),
+          onTap: () {},
+        ),
+        ListTile(
+            leading: Icon(Icons.camera),
+            title: Text('Camera'),
+            trailing: Icon(Icons.navigate_next),
+            onTap: () {})
+      ]),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
