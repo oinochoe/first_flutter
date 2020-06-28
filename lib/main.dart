@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_text + '`s world3'),
+        title: Text(_text + '`s world'),
       ),
       body: ListView(scrollDirection: Axis.vertical, children: <Widget>[
         ListTile(
