@@ -36,27 +36,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(_text + '`s world'),
       ),
-      body: GridView.count(crossAxisCount: 2, // 열수
-          children: <Widget>[
-            Container(
-                color: Colors.red,
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(8.0),
-                margin: const EdgeInsets.all(8.0)),
-            Container(
-                color: Colors.green,
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(8.0),
-                margin: const EdgeInsets.all(8.0)),
-            Container(
-                color: Colors.blue,
-                width: 100,
-                height: 100,
-                padding: const EdgeInsets.all(8.0),
-                margin: const EdgeInsets.all(8.0))
-          ]),
+      body: PageView(children: <Widget>[
+        Container(
+          color: Colors.red,
+        ),
+        Container(
+          color: Colors.green,
+        ),
+        Container(
+          color: Colors.blue,
+        )
+      ]),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
