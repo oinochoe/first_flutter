@@ -8,12 +8,36 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '플러터 데모인가',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: DefaultTabController(
+        // scaffold감싸고
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Tab'),
+            bottom: TabBar(
+              // Scaffold의 bottom 프로퍼티에 TabBar 지정
+              tabs: <Widget>[
+                // tabs 프로퍼티에 Tab의 리스트 지정
+                Tab(icon: Icon(Icons.tag_faces)),
+                Tab(text: '메뉴2'),
+                Tab(icon: Icon(Icons.info), text: '메뉴3'),
+              ],
+            ),
+          ),
+          body: TabBarView(
+              // Scaffold의 body 프로퍼티에는 TabBarView 배치
+              children: <Widget>[
+                // children 프로퍼티에 표시할 화면 배치
+                Container(color: Colors.yellow),
+                Container(color: Colors.orange),
+                Container(color: Colors.red)
+              ]),
+        ),
+      ),
     );
   }
 }
