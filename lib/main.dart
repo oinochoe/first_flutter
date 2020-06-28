@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: DefaultTabController(
         // scaffold감싸고
@@ -32,9 +32,9 @@ class MyApp extends StatelessWidget {
               // Scaffold의 body 프로퍼티에는 TabBarView 배치
               children: <Widget>[
                 // children 프로퍼티에 표시할 화면 배치
-                Container(color: Colors.yellow),
-                Container(color: Colors.orange),
-                Container(color: Colors.red)
+                Container(color: Colors.green),
+                Container(color: Colors.blue),
+                Container(color: Colors.yellow)
               ]),
         ),
       ),
