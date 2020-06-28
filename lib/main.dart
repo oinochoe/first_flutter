@@ -37,6 +37,71 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_text + '`s world'),
       ),
       body: PageView(children: <Widget>[
+        Column(children: <Widget>[
+          Container(
+              color: Colors.red,
+              width: 100,
+              height: 100,
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0)),
+          Container(
+              color: Colors.green,
+              width: 100,
+              height: 100,
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0)),
+          Container(
+            color: Colors.blue,
+            width: 100,
+            height: 100,
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8.0),
+          )
+        ]),
+        Row(
+            mainAxisSize: MainAxisSize.max, // 가로로 꽉 채우기
+            mainAxisAlignment: MainAxisAlignment.center, // 가로 방향 가운데 정렬
+            crossAxisAlignment: CrossAxisAlignment.center, // 세로 방향 가운데 정렬
+            children: <Widget>[
+              Container(
+                  color: Colors.red,
+                  width: 100,
+                  height: 100,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8.0)),
+              Container(
+                  color: Colors.green,
+                  width: 100,
+                  height: 100,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8.0)),
+              Container(
+                  color: Colors.yellow,
+                  width: 100,
+                  height: 100,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8.0)),
+            ]),
+        Stack(children: <Widget>[
+          Container(
+              color: Colors.red, // 빨강
+              width: 100,
+              height: 100,
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0)),
+          Container(
+              color: Colors.green, // 초록
+              width: 80,
+              height: 80,
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0)),
+          Container(
+              color: Colors.blue, // 파랑
+              width: 40,
+              height: 40,
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0)),
+        ]),
         ListView(scrollDirection: Axis.vertical, children: <Widget>[
           ListTile(
             leading: Icon(Icons.home),
@@ -56,6 +121,32 @@ class _MyHomePageState extends State<MyHomePage> {
               trailing: Icon(Icons.navigate_next),
               onTap: () {})
         ]),
+        SingleChildScrollView(
+          child: ListBody(
+            children: items.map((i) => Text('$i')).toList(),
+          ),
+        ),
+        GridView.count(crossAxisCount: 2, // 열수
+            children: <Widget>[
+              Container(
+                  color: Colors.red,
+                  width: 100,
+                  height: 100,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8.0)),
+              Container(
+                  color: Colors.green,
+                  width: 100,
+                  height: 100,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8.0)),
+              Container(
+                  color: Colors.blue,
+                  width: 100,
+                  height: 100,
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8.0))
+            ]),
         Container(
           color: Colors.green,
         ),
