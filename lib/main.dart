@@ -8,22 +8,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: DefaultTabController(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.red,
+        ),
+        /* home: DefaultTabController(
         // scaffold감싸고
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Tab'),
+            title: Text('타이틀이다'),
             bottom: TabBar(
               // Scaffold의 bottom 프로퍼티에 TabBar 지정
               tabs: <Widget>[
                 // tabs 프로퍼티에 Tab의 리스트 지정
-                Tab(icon: Icon(Icons.tag_faces)),
-                Tab(text: '메뉴2'),
+                Tab(icon: Icon(Icons.tag_faces), text: '메뉴1'),
+                Tab(icon: Icon(Icons.home), text: '메뉴2'),
                 Tab(icon: Icon(Icons.info), text: '메뉴3'),
               ],
             ),
@@ -52,7 +52,8 @@ class MyApp extends StatelessWidget {
               ]),
         ),
       ),
-    );
+     */
+        home: MyHomePage());
   }
 }
 // 여기까지는 공통 코드
@@ -75,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_text + '`s world'),
       ),
       body: PageView(children: <Widget>[
+        Center(child: Container(color: Colors.red, width: 100, height: 100)),
         Column(children: <Widget>[
           Container(
               color: Colors.red,
