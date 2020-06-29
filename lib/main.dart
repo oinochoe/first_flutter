@@ -28,6 +28,20 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
+          bottomNavigationBar: BottomNavigationBar(items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text('Profile'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notifications),
+              title: Text('Notification'),
+            )
+          ]),
           body: TabBarView(
               // Scaffold의 body 프로퍼티에는 TabBarView 배치
               children: <Widget>[
