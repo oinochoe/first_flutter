@@ -77,6 +77,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: PageView(children: <Widget>[
         Center(child: Container(color: Colors.red, width: 100, height: 100)),
+        Padding(
+            padding: const EdgeInsets.only(left: 40.0),
+            child: Container(color: Colors.red, width: 100, height: 100)),
         Column(children: <Widget>[
           Container(
               color: Colors.red,
