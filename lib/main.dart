@@ -76,6 +76,13 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_text + '`s world'),
       ),
       body: PageView(children: <Widget>[
+        Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              color: Colors.red,
+              width: 300,
+              height: 350,
+            )),
         Center(child: Container(color: Colors.red, width: 100, height: 100)),
         Padding(
             padding: const EdgeInsets.only(left: 40.0),
