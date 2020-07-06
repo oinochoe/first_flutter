@@ -76,6 +76,23 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_text + '`s world'),
       ),
       body: PageView(children: <Widget>[
+        Column(children: <Widget>[
+          Expanded(
+            flex: 2,
+            child: Container(
+              color: Colors.red,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.green,
+            ),
+          ),
+          Expanded(
+              child: Container(
+            color: Colors.blue,
+          ))
+        ]),
         Align(
             alignment: Alignment.bottomRight,
             child: Container(
