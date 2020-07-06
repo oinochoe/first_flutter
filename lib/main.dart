@@ -76,6 +76,28 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_text + '`s world'),
       ),
       body: PageView(children: <Widget>[
+        Center(
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            elevation: 4.0, // 그림자 깊이
+            child: RaisedButton(
+              child: Text('RaisedButton'),
+              color: Colors.orange, // 색상
+              onPressed: () {
+                // 실행될 코드 작성
+              },
+            ),
+          ),
+        ),
+        SizedBox(
+            width: 100,
+            height: 100,
+            child: FlatButton(
+              child: Text('FlatButton'),
+              onPressed: () {},
+            )),
         Column(children: <Widget>[
           Expanded(
             flex: 2,
