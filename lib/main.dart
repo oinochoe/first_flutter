@@ -91,6 +91,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
+        Center(
+          child: IconButton(
+            icon: Icon(Icons.add),
+            color: Colors.red, // 아이콘 색상
+            iconSize: 100.0, // 기본값 24.0
+            onPressed: () {},
+          ),
+        ),
         SizedBox(
             width: 100,
             height: 100,
