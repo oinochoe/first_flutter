@@ -99,6 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {},
           ),
         ),
+        FloatingActionButton(child: Icon(Icons.add), onPressed: () {}),
         SizedBox(
             width: 100,
             height: 100,
