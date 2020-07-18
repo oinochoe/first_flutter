@@ -76,11 +76,16 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_text + '`s world'),
       ),
       body: PageView(children: <Widget>[
+        CircleAvatar(
+          child: Icon(Icons.person),
+        ),
         Icon(
           Icons.home,
           color: Colors.red,
           size: 60.0, // 기본 값 24.0
         ),
+        CircularProgressIndicator(),
+        LinearProgressIndicator(),
         Center(child: Image.asset("assets/lion.png")),
         Center(
           child: Card(
