@@ -83,11 +83,19 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             elevation: 4.0, // 그림자 깊이
             child: RaisedButton(
-              child: Text('RaisedButton'),
-              color: Colors.orange, // 색상
-              onPressed: () {
-                // 실행될 코드 작성
-              },
+              child: Text(
+                'Hello world',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                    letterSpacing: 4.0)),
+                color: Colors.orange, // 색상
+                onPressed: () {
+                  // 실행될 코드 작성
+                },
+              ),
             ),
           ),
         ),
