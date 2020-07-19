@@ -76,6 +76,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_text + '`s world'),
       ),
       body: PageView(children: <Widget>[
+        Center(
+          child: TextField(),
+        ),
         CircleAvatar(
           child: Icon(Icons.person),
         ),
@@ -241,7 +244,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: items.map((i) => Text('$i')).toList(),
           ),
         ),
-        GridView.count(crossAxisCount: 2, // 열수
+        GridView.count(crossAxisCount: 2, // 열��
             children: <Widget>[
               Container(
                   color: Colors.red,
