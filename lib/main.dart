@@ -66,6 +66,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var _text = 'noel';
+  var isChecked = false;
+  var isCheck = false;
 
   final items = List.generate(100, (i) => i).toList();
 
@@ -76,6 +78,24 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_text + '`s world'),
       ),
       body: PageView(children: <Widget>[
+        Column(children: <Widget>[
+          Checkbox(
+            value: isChecked,
+            onChanged: (value) {
+              setState(() {
+                isChecked = value;
+              });
+            },
+          ),
+          Switch(
+            value: isCheck,
+            onChanged: (value) {
+              setState(() {
+                isCheck = value;
+              });
+            },
+          )
+        ]),
         Center(
             child: TextField(
                 decoration: InputDecoration(
