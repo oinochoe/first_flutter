@@ -76,9 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_text + '`s world'),
       ),
       body: PageView(children: <Widget>[
-        Center(
-          child: TextField(),
-        ),
+        TextField(
+            decoration: InputDecoration(
+          labelText: '여기에 입력하세요',
+        )),
         CircleAvatar(
           child: Icon(Icons.person),
         ),
