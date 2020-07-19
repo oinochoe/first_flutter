@@ -65,7 +65,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _text = 'noel';
+  var _text = 'noel\'s ';
   var isChecked = false;
   var isCheck = false;
 
@@ -75,10 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_text + '`s world'),
+        title: Text(_text + 'Checkbox / Radio / Switch'),
       ),
       body: PageView(children: <Widget>[
-        Column(children: <Widget>[
+        Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
           Checkbox(
             value: isChecked,
             onChanged: (value) {
@@ -86,6 +86,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 isChecked = value;
               });
             },
+          ),
+          SizedBox(
+            height: 40,
           ),
           Switch(
             value: isCheck,
