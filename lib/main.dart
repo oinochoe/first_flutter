@@ -64,10 +64,13 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+enum Gender { MAN, WOMEN }
+
 class _MyHomePageState extends State<MyHomePage> {
   var _text = 'noel\'s ';
   var isChecked = false;
   var isCheck = false;
+  Gender _gender = Gender.MAN;
 
   final items = List.generate(100, (i) => i).toList();
 
@@ -78,27 +81,72 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_text + 'Checkbox / Radio / Switch'),
       ),
       body: PageView(children: <Widget>[
-        Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-          Checkbox(
-            value: isChecked,
-            onChanged: (value) {
-              setState(() {
-                isChecked = value;
-              });
-            },
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Switch(
-            value: isCheck,
-            onChanged: (value) {
-              setState(() {
-                isCheck = value;
-              });
-            },
-          )
-        ]),
+        Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              // Radio는 라디오 영역만 터치 영역으로 인식
+              ListTile(
+                  title: Text('남자'),
+                  leading: Radio(
+                      value: Gender.MAN,
+                      groupValue: _gender,
+                      onChanged: (value) {
+                        setState(() {
+                          _gender = value;
+                        });
+                      })),
+              ListTile(
+                  title: Text('여자'),
+                  leading: Radio(
+                      value: Gender.WOMEN,
+                      groupValue: _gender,
+                      onChanged: (value) {
+                        setState(() {
+                          _gender = value;
+                        });
+                      })),
+              SizedBox(height: 40),
+              RadioListTile(
+                title: Text('남자'),
+                value: Gender.MAN,
+                groupValue: _gender,
+                onChanged: (value) {
+                  setState(() {
+                    _gender = value;
+                  });
+                },
+              ),
+              RadioListTile(
+                title: Text('여자'),
+                value: Gender.WOMEN,
+                groupValue: _gender,
+                onChanged: (value) {
+                  setState(() {
+                    _gender = value;
+                  });
+                },
+              ),
+              Checkbox(
+                value: isChecked,
+                onChanged: (value) {
+                  setState(() {
+                    isChecked = value;
+                  });
+                },
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Switch(
+                value: isCheck,
+                onChanged: (value) {
+                  setState(() {
+                    isCheck = value;
+                  });
+                },
+              )
+            ]),
         Center(
             child: TextField(
                 decoration: InputDecoration(
