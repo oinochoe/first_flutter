@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 void main() {
   runApp(MyApp());
@@ -9,6 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
@@ -56,16 +58,194 @@ class MyApp extends StatelessWidget {
         home: MyHomePage());
   }
 }
+
+class Genre {
+  final String name;
+  final String imageUrl;
+  final Color color;
+
+  const Genre({this.name, this.imageUrl, this.color});
+}
+
+class MyHomePage extends StatelessWidget {
+  static const _genres = <Genre>[
+    Genre(
+      name: 'Rock',
+      imageUrl:
+          'https://i.ibb.co/7Vw03W1/hector-bermudez-i-IWDt0f-Xa84-unsplash-1.jpg',
+      color: Color(0xFFB71C1C),
+    ),
+    Genre(
+      name: 'Hip Hop',
+      imageUrl:
+          'https://i.ibb.co/12mrYms/joel-muniz-RLH-Wmlnj2k-unsplash-2.jpg',
+      color: Color(0xFF3949AB),
+    ),
+    Genre(
+      name: 'Pop',
+      imageUrl:
+          'https://i.ibb.co/bN3051y/thomas-le-f-B4-Zo2j-PA3-E-unsplash-3.jpg',
+      color: Color(0xFF880E4F),
+    ),
+    Genre(
+      name: 'Dance',
+      imageUrl:
+          'https://i.ibb.co/6WWhjB9/sarthak-navjivan-i-TZOPe7-Bp-TM-unsplash-6.jpg',
+      color: Color(0xFF004D40),
+    ),
+    Genre(
+      name: 'Classical',
+      imageUrl:
+          'https://i.ibb.co/c6f1XCR/manuel-nageli-Nsgs-Qj-HA1m-M-unsplash-5.jpg',
+      color: Color(0xFFFFB300),
+    ),
+    Genre(
+      name: 'Retro',
+      imageUrl:
+          'https://i.ibb.co/Y2fyYSF/mink-mingle-HRyj-ETL87-Gg-unsplash-4.jpg',
+      color: Colors.blue,
+    ),
+    Genre(
+      name: 'Chill',
+      imageUrl:
+          'https://i.ibb.co/V3MQJMs/jorge-salvador-m4-Kj-Tcz-Stxw-unsplash-8.jpg',
+      color: Color(0xFF00ACC1),
+    ),
+    Genre(
+      name: 'Jazz',
+      imageUrl:
+          'https://i.ibb.co/88tss5D/chris-bair-A10y2-Eq7-OHY-unsplash-7.jpg',
+      color: Color(0xFF827717),
+    ),
+    Genre(
+      name: 'Punk',
+      imageUrl:
+          'https://i.ibb.co/k21LkPN/priscilla-du-preez-Ym-Xc-SCAVu-O0-unsplash-9.jpg',
+      color: Colors.deepOrange,
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final tileSize = MediaQuery.of(context).size / 3;
+
+    return Scaffold(
+      backgroundColor: Colors.grey[900],
+      body: Wrap(
+        children: [
+          for (var genre in _genres)
+            Tile(
+              key: Key(genre.name),
+              imageUrl: genre.imageUrl,
+              color: genre.color,
+              title: genre.name,
+              size: tileSize,
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class Tile extends StatelessWidget {
+  final Size size;
+  final Color color;
+  final String imageUrl;
+  final String title;
+
+  Tile({
+    Key key,
+    this.size,
+    this.color,
+    this.imageUrl,
+    this.title,
+  }) : super(key: key);
+
+  Offset _getRelativeToCenterOffset(Offset offset, Size boxSize) {
+    final halfWidth = boxSize.width / 2;
+    final halfHeight = boxSize.height / 2;
+
+    final centeredOffset = offset - Offset(halfWidth, halfHeight);
+
+    final xCoef = halfWidth / centeredOffset.dx;
+    final yCoef = halfHeight / centeredOffset.dy;
+
+    final result = Offset(
+      xCoef == 0.0 ? 0.0 : 100.0 / xCoef,
+      yCoef == 0.0 ? 0.0 : 100.0 / yCoef,
+    );
+
+    return result / 100.0;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    bool isHovering = false;
+    Offset pointerOffset = Offset.zero;
+
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return MouseRegion(
+          onEnter: (_) => setState(() => isHovering = true),
+          onExit: (_) {
+            pointerOffset = Offset.zero;
+            isHovering = false;
+            setState(() {});
+          },
+          onHover: (event) {
+            // There is a bug in the beta channel: event.localPosition
+            // is a global position. So we have to calculate it manually
+            final renderBox = (context.findRenderObject() as RenderBox);
+            final offset = renderBox.globalToLocal(event.position);
+            pointerOffset = _getRelativeToCenterOffset(offset, size);
+            setState(() {});
+          },
+          child: SizedBox(
+            width: size.width,
+            height: size.height,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.network(
+                  imageUrl,
+                  alignment:
+                      Alignment(pointerOffset.dx, pointerOffset.dy) * 0.2,
+                  color: isHovering ? color : null,
+                  colorBlendMode: BlendMode.multiply,
+                  fit: BoxFit.none,
+                ),
+                AnimatedAlign(
+                  duration: const Duration(milliseconds: 150),
+                  curve: Curves.easeOut,
+                  alignment:
+                      Alignment(pointerOffset.dx, pointerOffset.dy) * 0.3,
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 28.0,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
 // 여기까지는 공통 코드
 
 // 여기서부터 수정합니다.
-class MyHomePage extends StatefulWidget {
+/* class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
-
+ */
 enum Gender { MAN, WOMEN }
-
+/*
 class _MyHomePageState extends State<MyHomePage> {
   var _text = 'noel\'s ';
   var isChecked = false;
@@ -356,3 +536,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+ */
